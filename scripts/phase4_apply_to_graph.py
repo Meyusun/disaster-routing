@@ -35,11 +35,26 @@ import osmnx as ox
 import pandas as pd
 from shapely import wkt
 
-from phase4_damage_pressure import (DAMAGE_CSV, GRAPH, METRIC_CRS,
+import argparse
+from phase4_damage_pressure import (BOLGELER, VARSAYILAN_BOLGE,
                                     SINIF_AGIRLIK, hesapla)
 
 R = 25.0
-OUT_GRAPH = "data/mexico_city_graph_faz4.graphml"
+
+# --bolge destegi: bu script modul seviyesindeki Mexico City sabitlerini
+# import ediyordu, bu yuzden --bolge sessizce yok sayiliyordu.
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--bolge", default=VARSAYILAN_BOLGE)
+_args, _ = _ap.parse_known_args()
+
+_B = BOLGELER[_args.bolge]
+GRAPH = _B["graph"]
+DAMAGE_CSV = _B["csv"]
+METRIC_CRS = _B["crs"]
+
+# Cikti adi girdi grafindan turetilir; integrated_run
+# 'data/graph_turkoglu_faz4.graphml' bekliyor.
+OUT_GRAPH = GRAPH.replace(".graphml", "_faz4.graphml")
 
 
 def main():
