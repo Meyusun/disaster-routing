@@ -5,10 +5,10 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Adım 1 "bitti" şartları
 - [x] Yusuf'un laptopunda ortam hazır: conda `disaster`, Python 3.11.15, torch 2.11.0+cu128, `torch.cuda.is_available()` = True, RTX 4060 8 GB (kaynak: 2026-11-27 tarama raporu)
-- [ ] `pytest` kuruldu (taramada YOK çıktı)
-- [ ] V4, GitHub `Meyusun/disaster-routing` reposunun `v4` dalına gönderildi (push)
-- [ ] Yusuf'un laptopunda `LC_ALL=C python -m pytest -q tests` FAILED vermiyor
-- [ ] EMSR648 verisi `data/emsr648` içine kopyalandı ve `python -m scripts.run_emsr AOI17` çalıştı
+- [x] `pytest` kuruldu (taramada YOK çıktı) — kanıt: 2026-11-27 `conda run -n disaster python -m pytest -q tests` çalıştı (bu adımda paket kurulmadı, pytest ortamda zaten vardı)
+- [x] V4, GitHub `Meyusun/disaster-routing` reposunun `v4` dalına gönderildi (push) — kanıt: 2026-11-27 `git push -u origin v4` → `* [new branch] v4 -> v4`
+- [x] Yusuf'un laptopunda `LC_ALL=C python -m pytest -q tests` FAILED vermiyor — kanıt: 2026-11-27 internetsiz: `10 passed, 1 skipped in 2.02s`; `DR_CANLI=1` ile: `10 passed, 1 skipped in 79.80s`. Atlanan: `tests/test_model.py:7: model dosyasi veya KATE-CD verisi yok`
+- [x] EMSR648 verisi `data/emsr648` içine kopyalandı ve `python -m scripts.run_emsr AOI17` çalıştı — kanıt: 2026-11-27 `python -m scripts.run_emsr AOI17 --veri data/emsr648` → `Hasarsiz rota: 4270 m`, R=25 için `4522 m` (V3 ile aynı). İlk denemede Overpass sunucusu `502 Bad Gateway` (sunucu dolu) verdi, ikinci denemede çalıştı.
 - [ ] Model dosyaları ve Maxar görüntüleri ikinizin de erişebildiği bir yerde (aşağıdaki "Kuzey'den alınacaklar")
 - [ ] Kuzey sadece README'ye bakarak testleri ve `python -m scripts.run_emsr AOI17`'yi çalıştırdı
 
@@ -25,7 +25,9 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Son yapılanlar
 - 2026-11-27 — Adım 0 bitti: V3'ten V4'e temiz başlangıç (K-1). Testler Claude'un bulut ortamında çalıştırıldı: 10 geçti, 1 atlandı (model testi; o ortamda PyTorch yoktu).
+- 2026-11-27 — Adım 1 kısmen: laptopta testler geçti (10 geçti, 1 atlandı), `run_emsr AOI17` V3 ile aynı sonucu verdi, v4 dalı GitHub'a gönderildi.
 - 2026-11-27 — Yusuf'un laptopu iki kez tarandı (sadece okundu, hiçbir şey değiştirilmedi). Bütün dosyaların yeri: `docs/DOSYA_HARITASI.md`.
 
 ## Açık sorunlar
+- `run_emsr` yol ağını internetten (Overpass) çekiyor; sunucu dolu olunca 502 hatası veriyor, tekrar denemek gerekiyor.
 - Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. Model dosyaları gelince çalıştırılacak.
