@@ -1,17 +1,31 @@
 # DURUM
 
 **Aktif adım: 1 — Herkesin bilgisayarında çalışsın**
-Son güncelleme: 2026-11-27
+Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Adım 1 "bitti" şartları
+- [x] Yusuf'un laptopunda ortam hazır: conda `disaster`, Python 3.11.15, torch 2.11.0+cu128, `torch.cuda.is_available()` = True, RTX 4060 8 GB (kaynak: 2026-11-27 tarama raporu)
+- [ ] `pytest` kuruldu (taramada YOK çıktı)
 - [ ] V4, GitHub `Meyusun/disaster-routing` reposunun `v4` dalına gönderildi (push)
-- [ ] Yusuf'un bilgisayarında `LC_ALL=C python -m pytest -q tests` FAILED vermiyor
-- [ ] Model dosyaları (`checkpoints/*.pth`) ve Maxar görüntüleri ikinizin de erişebildiği bir yerde
+- [ ] Yusuf'un laptopunda `LC_ALL=C python -m pytest -q tests` FAILED vermiyor
+- [ ] EMSR648 verisi `data/emsr648` içine kopyalandı ve `python -m scripts.run_emsr AOI17` çalıştı
+- [ ] Model dosyaları ve Maxar görüntüleri ikinizin de erişebildiği bir yerde (aşağıdaki "Kuzey'den alınacaklar")
 - [ ] Kuzey sadece README'ye bakarak testleri ve `python -m scripts.run_emsr AOI17`'yi çalıştırdı
+
+## Kuzey'den alınacaklar (Yusuf'un laptopunda ve USB'de YOK)
+- `checkpoints/post_best.pth` (3 kanal model) ve `checkpoints/best_model.pth` (6 kanal model)
+- `inputs/maxar_2022-07-26_10300100D797E100.tif`, `inputs/maxar_2023-02-11_10300100E19A4400.tif`, `inputs/maxar_2023-02-28_10300100E3154100.tif`, `inputs/maxar_2023-02-07_1040010082698700.tif` (adlar: `docs/arsiv_v3/CANLI_AKIS.md`)
+- V3 notuna göre bunların hepsi `sunum_yedek.tar.gz` (367 MB) içindeydi.
+- KATE-CD verisi (`data/kate_cd`). Sadece Adım 6'da gerekli.
+
+## Yusuf'un laptopundaki önemli şeyler
+- `~/disaster-routing` (eski repo, 9,6 GB): **silinmeyecek.** İçinde `data/emsr648` (AOI04, AOI16, AOI17), `data/zhu_2017_general_model.tif` (Adım 5), `data/maxar/`, takip edilmeyen 4 script ve eski `docs/Kararlar.md` var.
+- Disk: 19 GB boş (%87 dolu). Büyük veri indirmeden önce yer açılmalı.
+- Git: `user.name` = "Yusuf ...", `user.email` = myusufobak@gmail.com. GitHub, commit'i hesaba e-postaya bakarak bağlar. Bu e-posta GitHub hesabının e-posta ayarlarında kayıtlı değilse commit'ler hesaba bağlanmaz.
 
 ## Son yapılanlar
 - 2026-11-27 — Adım 0 bitti: V3'ten V4'e temiz başlangıç (K-1). Testler Claude'un bulut ortamında çalıştırıldı: 10 geçti, 1 atlandı (model testi; o ortamda PyTorch yoktu).
+- 2026-11-27 — Yusuf'un laptopu tarandı (sadece okundu, hiçbir şey değiştirilmedi).
 
 ## Açık sorunlar
-- Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. PyTorch ve model dosyası olan bir bilgisayarda çalıştırılmalı.
-- Sıvılaşma katmanının V3'ten neden çıkarıldığı bilinmiyor. Adım 5'ten önce eski repodaki `docs/Kararlar.md`'ye bakılacak.
+- Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. Model dosyaları gelince çalıştırılacak.

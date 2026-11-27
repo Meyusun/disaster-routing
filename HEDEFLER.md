@@ -43,9 +43,9 @@ Kural: Bir adım bitmeden sonrakine geçilmez. Her adımın sonunda "bitti sayı
 
 ## Adım 5: Sıvılaşma katmanı
 
-- Önce: Eski repodaki `docs/Kararlar.md` ve `ChangeLog.md`'de bu katmanın neden çıkarıldığını bulun ve buraya yazın.
-- Veri: USGS Ground Failure, Zhu 2017 modeli. USGS bu değeri "pikselde sıvılaşan alanın yüzdesi" olarak veriyor.
-- Nasıl: Yolu kapatmadan, sadece `delay_edges_near` ile gecikme ekleyin. Eşiği birkaç değerle deneyin.
+- Eski kayıt (eski repo `docs/Kararlar.md`, K-22): Eşik 0,05'ten 0,10'a yükseltilmiş. Sebep: 0,05'te Türkoğlu'daki yolların %34,9'u (3700 yoldan 1292'si) "zor" işaretleniyordu ve bu fiziksel olarak savunulamaz bulunmuştu. Eski kayıtlarda "katman çıkarıldı" diye bir karar yok. V3'te bu katman hiç yoktu.
+- Veri: USGS Ground Failure, Zhu 2017 modeli. Dosya Yusuf'un laptopunda var: `~/disaster-routing/data/zhu_2017_general_model.tif`. USGS bu değeri "pikselde sıvılaşan alanın yüzdesi" olarak veriyor.
+- Nasıl: Yolu kapatmadan, sadece `delay_edges_near` ile gecikme ekleyin. Başlangıç eşiği 0,10 (eski K-22). Eşiği birkaç değerle deneyin.
 - **Bitti sayılır eğer:** Seçilen eşik ve gecikme değeri gerekçesiyle yazılı ve kaç yolun etkilendiği raporlanıyor.
 
 ## Adım 6: Hasar modelini sahada çalışır hale getir
