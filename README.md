@@ -35,6 +35,17 @@ conda activate disaster
 
 Tüm komutlar proje klasöründen çalıştırılır. V3 notuna göre GDAL Türkçe dil ayarında hata veriyor, bu yüzden komutların başına `LC_ALL=C` eklenir.
 
+## Veri hazırlığı
+
+EMSR648 uzman hasar haritası (AOI04, AOI16, AOI17) `data/emsr648` içinde olmalı. Eski repodan kopyalamak için:
+
+```bash
+mkdir -p data && cp -r ~/disaster-routing/data/emsr648 data/
+```
+
+(EMSR648 zip'leri Copernicus'tan da indirilebilir; bkz. `docs/DOSYA_HARITASI.md`.)
+`tests/test_kurulum.py` bu verinin yerinde olup olmadığını kontrol eder. Veri başka bir klasördeyse: `DR_VERI_KOK=<klasör>` (içinde `emsr648` olmalı).
+
 ## Çalıştırma
 
 ```bash

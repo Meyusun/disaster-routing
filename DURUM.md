@@ -9,6 +9,7 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 - [x] V4, GitHub `Meyusun/disaster-routing` reposunun `v4` dalına gönderildi (push) — kanıt: 2026-11-27 `git push -u origin v4` → `* [new branch] v4 -> v4`
 - [x] Yusuf'un laptopunda `LC_ALL=C python -m pytest -q tests` FAILED vermiyor — kanıt: 2026-11-27 internetsiz: `10 passed, 1 skipped in 2.02s`; `DR_CANLI=1` ile: `10 passed, 1 skipped in 79.80s`. Atlanan: `tests/test_model.py:7: model dosyasi veya KATE-CD verisi yok`
 - [x] EMSR648 verisi `data/emsr648` içine kopyalandı ve `python -m scripts.run_emsr AOI17` çalıştı — kanıt: 2026-11-27 `python -m scripts.run_emsr AOI17 --veri data/emsr648` → `Hasarsiz rota: 4270 m`, R=25 için `4522 m` (V3 ile aynı). İlk denemede Overpass sunucusu `502 Bad Gateway` (sunucu dolu) verdi, ikinci denemede çalıştı.
+- [x] Adım 1 için kurulum testi eklendi (tests/test_kurulum.py) — kanıt: 2026-11-27 normal: `LC_ALL=C conda run -n disaster --no-capture-output python -m pytest -q tests` → `13 passed, 1 skipped in 1.60s`; bozuk: `DR_VERI_KOK=/tmp/yok ... pytest -q tests/test_kurulum.py` → `1 failed, 2 passed in 0.78s`, `test_emsr_verisi_var` mesajı: `data/emsr648 eksik: README'deki 'Veri hazırlığı' adımını yap. (bakılan yer: /tmp/yok/emsr648, AOI17'de eksik: areaOfInterestA, builtUpA)`
 - [ ] Model dosyaları ve Maxar görüntüleri ikinizin de erişebildiği bir yerde (aşağıdaki "Kuzey'den alınacaklar")
 - [ ] Kuzey sadece README'ye bakarak testleri ve `python -m scripts.run_emsr AOI17`'yi çalıştırdı
 
@@ -24,11 +25,11 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 - Git: `user.name` = "Yusuf ...", `user.email` = myusufobak@gmail.com. GitHub, commit'i hesaba e-postaya bakarak bağlar. Bu e-posta GitHub hesabının e-posta ayarlarında kayıtlı değilse commit'ler hesaba bağlanmaz.
 
 ## Son yapılanlar
+- 2026-11-27 — Adım 1: kurulum testi `tests/test_kurulum.py` eklendi (kütüphaneler, osmnx ≥ 2, EMSR648 verisi); README'ye "Veri hazırlığı" eklendi.
 - 2026-11-27 — Adım 0 bitti: V3'ten V4'e temiz başlangıç (K-1). Testler Claude'un bulut ortamında çalıştırıldı: 10 geçti, 1 atlandı (model testi; o ortamda PyTorch yoktu).
 - 2026-11-27 — Adım 1 kısmen: laptopta testler geçti (10 geçti, 1 atlandı), `run_emsr AOI17` V3 ile aynı sonucu verdi, v4 dalı GitHub'a gönderildi.
 - 2026-11-27 — Yusuf'un laptopu iki kez tarandı (sadece okundu, hiçbir şey değiştirilmedi). Bütün dosyaların yeri: `docs/DOSYA_HARITASI.md`.
 
 ## Açık sorunlar
 - `run_emsr` yol ağını internetten (Overpass) çekiyor; sunucu dolu olunca 502 hatası veriyor, tekrar denemek gerekiyor.
-- Adım 1 için yeni test eklenmedi (kurulum adımı). Karar bekliyor: K-4 önerisi.
 - Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. Model dosyaları gelince çalıştırılacak.
