@@ -25,7 +25,7 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Son yapılanlar
 - 2026-11-27 — Adım 0 bitti: V3'ten V4'e temiz başlangıç (K-1). Testler Claude'un bulut ortamında çalıştırıldı: 10 geçti, 1 atlandı (model testi; o ortamda PyTorch yoktu).
-- 2026-11-27 — Yusuf'un laptopu tarandı (sadece okundu, hiçbir şey değiştirilmedi).
+- 2026-11-27 — Yusuf'un laptopu iki kez tarandı (sadece okundu, hiçbir şey değiştirilmedi). Bütün dosyaların yeri: `docs/DOSYA_HARITASI.md`.
 
 ## Açık sorunlar
 - Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. Model dosyaları gelince çalıştırılacak.

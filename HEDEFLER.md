@@ -37,7 +37,7 @@ Kural: Bir adım bitmeden sonrakine geçilmez. Her adımın sonunda "bitti sayı
 
 ## Adım 4: Fay hattı katmanı
 
-- Veri: USGS, Reitman ve ark. 2023, DOI 10.5066/P985I7U2. Ayrıntılı katman: `surface_rupture_lines` (1:1.500 ölçek).
+- Veri: USGS, Reitman ve ark. 2023, DOI 10.5066/P985I7U2. Ayrıntılı katman: `surface_rupture_lines` (1:1.500 ölçek). Dosya Yusuf'un laptopunda var: `~/disaster-routing/data/surface_rupture_lines_v1.1_202402.geojson` (bkz. `docs/DOSYA_HARITASI.md`).
 - Nasıl: Çizgileri oku, yol ağıyla aynı koordinat sistemine çevir, `close_edges_near(G, cizgiler, R=...)` ile yolları kapat. Bu fonksiyonun çizgiyle çalıştığı test T10 ile doğrulandı.
 - **Bitti sayılır eğer:** Fay hattının kestiği yollar kapanıyor ve bunu gösteren bir test var.
 
