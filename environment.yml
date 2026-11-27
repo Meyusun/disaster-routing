@@ -1,0 +1,18 @@
+name: disaster
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - osmnx>=2
+  - networkx
+  - geopandas
+  - shapely
+  - pyproj
+  - rasterio
+  - scipy
+  - numpy
+  - matplotlib
+  - pillow
+  - datasets
+  - pytest
+# PyTorch ayrica kurulur (ekran kartina gore komut degisir): https://pytorch.org
