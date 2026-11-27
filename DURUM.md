@@ -5,7 +5,7 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Adım 1 "bitti" şartları
 - [x] Yusuf'un laptopunda ortam hazır: conda `disaster`, Python 3.11.15, torch 2.11.0+cu128, `torch.cuda.is_available()` = True, RTX 4060 8 GB (kaynak: 2026-11-27 tarama raporu)
-- [x] `pytest` kuruldu (taramada YOK çıktı) — kanıt: 2026-11-27 `conda run -n disaster python -m pytest -q tests` çalıştı (bu adımda paket kurulmadı, pytest ortamda zaten vardı)
+- [x] `pytest` kuruldu — taramada YOK çıkmıştı; Yusuf pip install pytest ile kurdu, 2026-11-27 test komutu çalıştı
 - [x] V4, GitHub `Meyusun/disaster-routing` reposunun `v4` dalına gönderildi (push) — kanıt: 2026-11-27 `git push -u origin v4` → `* [new branch] v4 -> v4`
 - [x] Yusuf'un laptopunda `LC_ALL=C python -m pytest -q tests` FAILED vermiyor — kanıt: 2026-11-27 internetsiz: `10 passed, 1 skipped in 2.02s`; `DR_CANLI=1` ile: `10 passed, 1 skipped in 79.80s`. Atlanan: `tests/test_model.py:7: model dosyasi veya KATE-CD verisi yok`
 - [x] EMSR648 verisi `data/emsr648` içine kopyalandı ve `python -m scripts.run_emsr AOI17` çalıştı — kanıt: 2026-11-27 `python -m scripts.run_emsr AOI17 --veri data/emsr648` → `Hasarsiz rota: 4270 m`, R=25 için `4522 m` (V3 ile aynı). İlk denemede Overpass sunucusu `502 Bad Gateway` (sunucu dolu) verdi, ikinci denemede çalıştı.
@@ -30,4 +30,5 @@ Son güncelleme: 2026-11-27 (Yusuf'un laptop taraması sonrası)
 
 ## Açık sorunlar
 - `run_emsr` yol ağını internetten (Overpass) çekiyor; sunucu dolu olunca 502 hatası veriyor, tekrar denemek gerekiyor.
+- Adım 1 için yeni test eklenmedi (kurulum adımı). Karar bekliyor: K-4 önerisi.
 - Model testi (T6) henüz hiçbir bilgisayarda V4 ile çalıştırılmadı. Model dosyaları gelince çalıştırılacak.
